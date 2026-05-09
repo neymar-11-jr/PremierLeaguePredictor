@@ -3,15 +3,16 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+from data_fetcher import fetch_live_fixtures
 import joblib
 
 # ========== 任务一：合并三个赛季数据 ==========
-print("正在读取数据...")
+# 1. 先加载本地历史数据
 df23 = pd.read_csv("premier_league_2023.csv")
 df24 = pd.read_csv("premier_league_2024.csv")
 df25 = pd.read_csv("premier_league_2025.csv")
-
 df = pd.concat([df23, df24, df25], ignore_index=True)
+
 df["date"] = pd.to_datetime(df["date"])
 df = df.sort_values("date").reset_index(drop=True)
 

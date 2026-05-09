@@ -146,4 +146,6 @@ if st.button("🔮 开始预测", type="primary"):
         
         # 显示特征值（可选，用于演示）
         with st.expander("查看特征值"):
-            st.dataframe(X_new)
+            X_display = X_new.rename(columns = {'home_form':'主队近期胜率','h2h_advantage':'历史交战优势','attack_vs_defense':'进球效率','home_advantage':'主场优势'})
+            st.dataframe(X_display)
+
